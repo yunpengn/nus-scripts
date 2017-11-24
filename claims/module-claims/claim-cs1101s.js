@@ -75,7 +75,11 @@ var config = {
   // Format: YYYY/MM/DD
   // Note: Month is from 0-11, Date is from 1-31
   // This should be the semester's week 1. For AY15/16 Sem 1, it's Monday, Aug 10
+<<<<<<< HEAD
   first_day_of_sem: new Date(2018, 07, 13),
+=======
+  first_day_of_sem: new Date(2017, 08, 15),
+>>>>>>> Update cs1101s for AY17/18
   // In case you want to customize the duties field for each activity
   // Do not modify the keys
   duties: {
@@ -92,6 +96,7 @@ var config = {
   activities_list_fn: function () {
     var activities_list = [];
 
+<<<<<<< HEAD
     // ===Baseline Amount===
     // Assignment marking: 
     //  8h all runes missions and sidequests
@@ -121,12 +126,39 @@ var config = {
 
     for (var week = 1; week <= 13; week++) {
       if (mission_hours_division[week - 1] > 0) {
+=======
+    // Assignment marking: 22 - 2 hr x 11 weeks
+    // Consultation with students: 10 - 2 hrs x 5 weeks
+    // Course material preparation: 6
+    // Midterm marking: 3
+    // Project evaluation: 2 (let's say this is the contests)
+    // System preparation/setup: 5
+    // Tutorial: 22 - 2 hrs x 11 weeks
+    // TOTAL: 70 hours
+    for (var week = 1; week <= 13; week++) {
+      if (week < 12) {
+        activities_list.push({
+          activity_type: Claim.ASSIGNMENT_MARKING,
+          week: week,
+          day: 'SATURDAY',
+          start_time: '1300',
+          end_time: '1500'
+        });
+      }
+      if (week > 8 && week <= 13) {
+>>>>>>> Update cs1101s for AY17/18
         activities_list.push({
           activity_type: Claim.COURSE_MATERIAL_PREPARATION,
           week: week,
+<<<<<<< HEAD
           day: 'SUNDAY',
           start_time: '1000',
           end_time: `1${mission_hours_division[week - 1]}00`,
+=======
+          day: 'SATURDAY',
+          start_time: '1600',
+          end_time: '1800'
+>>>>>>> Update cs1101s for AY17/18
         });
       }
 

@@ -84,8 +84,13 @@ var config = {
   // Do not modify the keys
   duties: {
     'Assignment Marking': 'Graded students\' assignments',
+<<<<<<< HEAD
     'Course Material Preparation': 'Prepared for studios and assignments',
     'Tutorial': 'Conducted Tutorial ' + studio_number,
+=======
+    'Course Material Preparation': 'Prepared assignments',
+    'Tutorial': 'Conducted Tutorial ' + prompt("Your DG Number (e.g. 9)"),
+>>>>>>> Updated claims to check for DG Number
     'Consultation with students': 'Consultation',
     // 'Midterm Marking': 'Graded midterm test',
     // 'Project Evaluation': 'Evaluated programming contest',
@@ -96,6 +101,7 @@ var config = {
   activities_list_fn: function () {
     var activities_list = [];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     // ===Baseline Amount===
     // Assignment marking: 
@@ -129,6 +135,10 @@ var config = {
 =======
     // Assignment marking: 22 - 2 hr x 11 weeks
     // Consultation with students: 10 - 2 hrs x 5 weeks
+=======
+    // Assignment marking: 11 - 1 hr x 11 weeks
+    // Consultation with students: 21 - 3 hrs x 7 weeks
+>>>>>>> Updated claims to check for DG Number
     // Course material preparation: 6
     // Midterm marking: 3
     // Project evaluation: 2 (let's say this is the contests)
@@ -142,11 +152,15 @@ var config = {
           week: week,
           day: 'SATURDAY',
           start_time: '1300',
-          end_time: '1500'
+          end_time: '1400'
         });
       }
+<<<<<<< HEAD
       if (week > 8 && week <= 13) {
 >>>>>>> Update cs1101s for AY17/18
+=======
+      if (week % 2 == 0 || week == 13) {
+>>>>>>> Updated claims to check for DG Number
         activities_list.push({
           activity_type: Claim.COURSE_MATERIAL_PREPARATION,
           week: week,
@@ -156,9 +170,14 @@ var config = {
           end_time: `1${mission_hours_division[week - 1]}00`,
 =======
           day: 'SATURDAY',
+<<<<<<< HEAD
           start_time: '1600',
           end_time: '1800'
 >>>>>>> Update cs1101s for AY17/18
+=======
+          start_time: '1400',
+          end_time: '1700'
+>>>>>>> Updated claims to check for DG Number
         });
       }
 

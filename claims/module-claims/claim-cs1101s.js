@@ -78,12 +78,17 @@ var config = {
   module: 'CS1101S',
   // Format: YYYY/MM/DD
   // Note: Month is from 0-11, Date is from 1-31
+<<<<<<< HEAD
   // This should be the semester's week 1. For AY15/16 Sem 1, it's Monday, Aug 10
 <<<<<<< HEAD
   first_day_of_sem: new Date(2018, 07, 13),
 =======
   first_day_of_sem: new Date(2017, 08, 15),
 >>>>>>> Update cs1101s for AY17/18
+=======
+  // This should be the semester's week 1. For AY17/18 Sem 1, it's Monday, Aug 14
+  first_day_of_sem: new Date(2017, 07, 14),
+>>>>>>> Fix first day of semester
   // In case you want to customize the duties field for each activity
   // Do not modify the keys
   duties: {

@@ -17,7 +17,11 @@
 
 // To delete all claims on the page, run the function c.deleteAllClaims()
 
+<<<<<<< HEAD
 // Updated for: AY18/19 Sem 1
+=======
+// Updated for: AY17/18 Sem 1
+>>>>>>> Change DG time and small fix in comment
 
 // ***********************************************************
 // CONFIGURE THE RELEVANT PROPERTIES IN THE CONFIG OBJECT
@@ -205,6 +209,12 @@ var config = {
           ...studio_time,
           activity_type: Claim.TUTORIAL,
           week: week,
+<<<<<<< HEAD
+=======
+          day: 'TUESDAY',
+          start_time: '1400',
+          end_time: '1600'
+>>>>>>> Change DG time and small fix in comment
         });
       }
 

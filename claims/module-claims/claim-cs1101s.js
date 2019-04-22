@@ -17,11 +17,7 @@
 
 // To delete all claims on the page, run the function c.deleteAllClaims()
 
-<<<<<<< HEAD
 // Updated for: AY18/19 Sem 1
-=======
-// Updated for: AY17/18 Sem 1
->>>>>>> Change DG time and small fix in comment
 
 // ***********************************************************
 // CONFIGURE THE RELEVANT PROPERTIES IN THE CONFIG OBJECT
@@ -55,54 +51,22 @@ function promptAndParse(msg) {
   return parsed;
 }
 
-function studio_slot(code) {
-  let index = parseInt(code.match(/[0-9]+/)[0]) - 1;
-  let times = ["0800", "1000", "1200", "1400", "1600", "1800"];
-  let result = {
-    day: index < 5 ? "MONDAY" : "TUESDAY",
-    start_time: times[index % 5],
-    end_time: times[1 + (index % 5)]
-  };
-  console.log(`Detected studio slot ${index + 1}`);
-  console.log(result);
-  return result;
-}
-
-var studio_number = prompt("What is your Studio Code? (e.g. 01E)");
-var studio_time = studio_slot(studio_number);
-
 var config = {
   // Your NUSSTU ID, such as a0012345
-  student_id: prompt('Your NUSSTU ID, such as e0012345'),
+  student_id: prompt('Your NUSSTU ID, such as a0012345'),
   // Module you are claiming hours for, such as CS1101S
   module: 'CS1101S',
   // Format: YYYY/MM/DD
   // Note: Month is from 0-11, Date is from 1-31
-<<<<<<< HEAD
   // This should be the semester's week 1. For AY15/16 Sem 1, it's Monday, Aug 10
-<<<<<<< HEAD
-  first_day_of_sem: new Date(2018, 07, 13),
-=======
-  first_day_of_sem: new Date(2017, 08, 15),
->>>>>>> Update cs1101s for AY17/18
-=======
-  // This should be the semester's week 1. For AY17/18 Sem 1, it's Monday, Aug 14
-  first_day_of_sem: new Date(2017, 07, 14),
->>>>>>> Fix first day of semester
+  first_day_of_sem: new Date(2018, 7, 13),
   // In case you want to customize the duties field for each activity
   // Do not modify the keys
   duties: {
     'Assignment Marking': 'Graded students\' assignments',
-<<<<<<< HEAD
     'Course Material Preparation': 'Prepared for studios and assignments',
-    'Tutorial': 'Conducted Tutorial ' + studio_number,
-=======
-    'Course Material Preparation': 'Prepared assignments',
-    'Tutorial': 'Conducted Tutorial ' + prompt("Your DG Number (e.g. 9)"),
->>>>>>> Updated claims to check for DG Number
+    'Tutorial': 'Conducted Tutorial ' + prompt("Your Studio Number (e.g. 01E)"),
     'Consultation with students': 'Consultation',
-    // 'Midterm Marking': 'Graded midterm test',
-    // 'Project Evaluation': 'Evaluated programming contest',
     'System Preparation/setup': 'Setup of online system'
   },
 
@@ -110,16 +74,14 @@ var config = {
   activities_list_fn: function () {
     var activities_list = [];
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     // ===Baseline Amount===
-    // Assignment marking: 
+    // Assignment marking:
     //  8h all runes missions and sidequests
     //  3h environment model mission
     // Consultation with students: 12 = 1 hrs x 12 weeks
-    // Studio preparation: 12 = 1hrs x 12 weeks
-    // Studio: 24 = 2 x 12 weeks
-    // Baseline: 11 + 12 + 12 = 59
+    // Studio preparation: 12 = 1 hrs x 12 weeks
+    // Studio sessions: 24 = 2 hrs x 12 weeks
+    // Baseline: 11 + 12 + 12 + 24 = 59
 
     // === Variable Amount===
     //  + additional variable grading
@@ -133,7 +95,7 @@ var config = {
     // Mission authoring
     var mission_hours = 12 + promptAndParse("How many hours did you spend preparing missions?");
     // Consultation
-    var consultation_hours = 12 + promptAndParse("How many hours of consultation did you give? ")
+    var consultation_hours = 12 + promptAndParse("How many hours of consultation did you give?");
 
     var grading_hours_division = split_hours(grading_hours, 12);
     var mission_hours_division = split_hours(mission_hours, 13);
@@ -141,52 +103,12 @@ var config = {
 
     for (var week = 1; week <= 13; week++) {
       if (mission_hours_division[week - 1] > 0) {
-=======
-    // Assignment marking: 22 - 2 hr x 11 weeks
-    // Consultation with students: 10 - 2 hrs x 5 weeks
-=======
-    // Assignment marking: 11 - 1 hr x 11 weeks
-    // Consultation with students: 21 - 3 hrs x 7 weeks
->>>>>>> Updated claims to check for DG Number
-    // Course material preparation: 6
-    // Midterm marking: 3
-    // Project evaluation: 2 (let's say this is the contests)
-    // System preparation/setup: 5
-    // Tutorial: 22 - 2 hrs x 11 weeks
-    // TOTAL: 70 hours
-    for (var week = 1; week <= 13; week++) {
-      if (week < 12) {
-        activities_list.push({
-          activity_type: Claim.ASSIGNMENT_MARKING,
-          week: week,
-          day: 'SATURDAY',
-          start_time: '1300',
-          end_time: '1400'
-        });
-      }
-<<<<<<< HEAD
-      if (week > 8 && week <= 13) {
->>>>>>> Update cs1101s for AY17/18
-=======
-      if (week % 2 == 0 || week == 13) {
->>>>>>> Updated claims to check for DG Number
         activities_list.push({
           activity_type: Claim.COURSE_MATERIAL_PREPARATION,
           week: week,
-<<<<<<< HEAD
           day: 'SUNDAY',
           start_time: '1000',
           end_time: `1${mission_hours_division[week - 1]}00`,
-=======
-          day: 'SATURDAY',
-<<<<<<< HEAD
-          start_time: '1600',
-          end_time: '1800'
->>>>>>> Update cs1101s for AY17/18
-=======
-          start_time: '1400',
-          end_time: '1700'
->>>>>>> Updated claims to check for DG Number
         });
       }
 
@@ -205,47 +127,22 @@ var config = {
           activities_list.push({
             activity_type: Claim.CONSULTATION,
             week: week,
-            day: 'WEDNESDAY',
+            day: 'TUESDAY',
             start_time: '1000',
             end_time: `1${consultation_hours_division[week - 2]}00`,
           });
         }
         activities_list.push({
-          ...studio_time,
           activity_type: Claim.TUTORIAL,
           week: week,
-<<<<<<< HEAD
-=======
           day: 'TUESDAY',
-          start_time: '1400',
-          end_time: '1600'
->>>>>>> Change DG time and small fix in comment
+          start_time: '1200',
+          end_time: '1400'
         });
       }
 
     }
 
-    // activities_list.push({
-    //   activity_type: Claim.MIDTERM_MARKING,
-    //   week: 7,
-    //   day: 'WEDNESDAY',
-    //   start_time: '1700',
-    //   end_time: '2000'
-    // });
-    // activities_list.push({
-    //   activity_type: Claim.PROJECT,
-    //   week: 8,
-    //   day: 'WEDNESDAY',
-    //   start_time: '1700',
-    //   end_time: '1900'
-    // });
-    // activities_list.push({
-    //   activity_type: Claim.SYSTEM_SETUP,
-    //   week: 1,
-    //   day: 'TUESDAY',
-    //   start_time: '1600',
-    //   end_time: '2100'
-    // });
     return activities_list;
   }
 };
@@ -265,4 +162,5 @@ $.getScript(core_script)
     console.warn(jqxhr);
     console.warn(exception);
   });
+
 // c.makeAllClaims();

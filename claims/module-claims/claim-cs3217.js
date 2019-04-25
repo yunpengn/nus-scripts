@@ -55,14 +55,14 @@ var config = {
                end_time: String(1200 + Math.floor(hrs) * 100 + hrs % 1 * 60) };
     }
 
-    // Preparation claims (2h * 5 = 10h)
+    // Preparation claims (3h * 5 = 15h)
     for (var week of prep_weeks) {
       activities_list.push({
         activity_type: Claim.COURSE_MATERIAL_PREPARATION,
         week: week,
         day: 'SUNDAY',
         start_time: '1200',
-        end_time: '1400'
+        end_time: '1500'
       });  
     }    
 

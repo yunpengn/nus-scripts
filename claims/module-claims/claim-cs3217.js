@@ -46,9 +46,6 @@ var config = {
     const ps_weeks = [2, 4, 6, 8, 10];
     const ps_rates = [1.5, 1.5, 2, 2, 3];   // Hrs per submission
 
-    // ATTENTION: FILL THIS IN
-    const ps_students = [5, 5, 5, 5, 5];    // No. of students per PS
-
     // Great big hack that might just happen to work without importing a time library
     function make_time(hrs) {
       return { start_time: String(1200),
@@ -68,9 +65,18 @@ var config = {
 
     // Grading claims
     for (var ps = 0; ps < 5; ps++) {
-      var ps_hours = ps_students[ps] * ps_rates[ps];
-      var times = make_time(ps_hours);
+      // The script complains that can claim at most 8 hours per day. So split
+      // each PS into two-day work.
+      var times = make_time(ps_rates[ps] * 2);
+      activities_list.push({
+        activity_type: Claim.ASSIGNMENT_MARKING,
+        week: ps_weeks[ps],
+        day: 'SATURDAY',
+        start_time: times['start_time'],
+        end_time: times['end_time']
+      });
 
+      times = make_time(ps_rates[ps] * 3);
       activities_list.push({
         activity_type: Claim.ASSIGNMENT_MARKING,
         week: ps_weeks[ps],

@@ -66,8 +66,17 @@ var config = {
     // Grading claims
     for (var ps = 0; ps < 5; ps++) {
       // The script complains that can claim at most 8 hours per day. So split
-      // each PS into two-day work.
-      var times = make_time(ps_rates[ps] * 2);
+      // each PS into three-day work.
+      var times = make_time(ps_rates[ps] * 1);
+      activities_list.push({
+        activity_type: Claim.ASSIGNMENT_MARKING,
+        week: ps_weeks[ps],
+        day: 'FRIDAY',
+        start_time: times['start_time'],
+        end_time: times['end_time']
+      });
+
+      times = make_time(ps_rates[ps] * 2);
       activities_list.push({
         activity_type: Claim.ASSIGNMENT_MARKING,
         week: ps_weeks[ps],
@@ -76,7 +85,7 @@ var config = {
         end_time: times['end_time']
       });
 
-      times = make_time(ps_rates[ps] * 3);
+      times = make_time(ps_rates[ps] * 2);
       activities_list.push({
         activity_type: Claim.ASSIGNMENT_MARKING,
         week: ps_weeks[ps],

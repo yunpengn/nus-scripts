@@ -30,7 +30,7 @@ var config = {
   // Format: YYYY/MM/DD
   // Note: Month is from 0-11, Date is from 1-31
   // This should be the semester's week 1. For AY15/16 Sem 2, it's Monday, Jan 11
-  first_day_of_sem: new Date(2018, 0, 15),
+  first_day_of_sem: new Date(2019, 0, 14),
   // in case you want to customize the duties field for each activity
   // Do not modify the keys
   duties: {
@@ -44,10 +44,10 @@ var config = {
 
     const prep_weeks = [1, 3, 5, 7, 9];
     const ps_weeks = [2, 4, 6, 8, 10];
-    const ps_rates = [1, 1, 1.5, 1.5, 2];   // Hrs per submission
+    const ps_rates = [1.5, 1.5, 2, 2, 3];   // Hrs per submission
 
     // ATTENTION: FILL THIS IN
-    const ps_students = [0, 0, 0, 0, 0];    // No. of students per PS
+    const ps_students = [5, 5, 5, 5, 5];    // No. of students per PS
 
     // Great big hack that might just happen to work without importing a time library
     function make_time(hrs) {
@@ -58,7 +58,7 @@ var config = {
     // Preparation claims (2h * 5 = 10h)
     for (var week of prep_weeks) {
       activities_list.push({
-        activity_type: Claim.ASSIGNMENT_MARKING,  // Waikay didn't approve "course material preparation"
+        activity_type: Claim.COURSE_MATERIAL_PREPARATION,
         week: week,
         day: 'SUNDAY',
         start_time: '1200',
